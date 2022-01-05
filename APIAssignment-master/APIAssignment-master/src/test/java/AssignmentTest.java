@@ -1,7 +1,6 @@
-import org.junit.Test;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class AssignmentTest {
 
@@ -17,7 +16,15 @@ public class AssignmentTest {
         then()
                 .log().body()
                 .assertThat()
-                .body("fairings.recovery_attempt",equalTo(null))
+                .body("fairings",equalTo(null)).
+
+                and().
+
+
+            header("content-length", equalTo("972")).
+
+                and()
+
                 .statusCode(200);
     }
 }
